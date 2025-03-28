@@ -4,7 +4,7 @@ import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "menu_items")
+@Document(collection = "menuItem")
 @Data
 public class MenuItem {
     @Id

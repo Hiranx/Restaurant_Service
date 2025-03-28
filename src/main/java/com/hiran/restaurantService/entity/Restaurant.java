@@ -4,6 +4,8 @@ import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDateTime;
+
 @Document(collection = "restaurants")
 @Data
 public class Restaurant {
@@ -16,5 +18,7 @@ public class Restaurant {
     private boolean isAvailable = true;
     private String openingTime;   // Opening time (e.g., 09:00)
     private String closingTime;
+    private boolean approved = false; // New field
+    private String registrationDate = String.valueOf(LocalDateTime.now()); // New field
 }
 
