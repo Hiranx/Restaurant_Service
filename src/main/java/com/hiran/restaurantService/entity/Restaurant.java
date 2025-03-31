@@ -15,7 +15,7 @@ public class Restaurant {
     private String address;          // Simple address field
     private String contactNumber;    // Phone number for contact
     private String cuisineType;      // e.g., "Italian", "Chinese"
-    private boolean isAvailable = true;
+    private boolean isAvailable = false;
     private String openingTime;   // Opening time (e.g., 09:00)
     private String closingTime;
     private boolean approved = false; // New field

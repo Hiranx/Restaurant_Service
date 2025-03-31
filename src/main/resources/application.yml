@@ -4,3 +4,4 @@ spring:
       uri: mongodb+srv://hiran9204:1234@cluster0.w7lh9.mongodb.net/restaurant_db?retryWrites=true&w=majority&appName=Cluster0
 server:
   port: 8081  # Avoid port conflicts with other services
+
