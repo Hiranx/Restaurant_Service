@@ -1,5 +1,6 @@
 package com.hiran.restaurantService.service;
 
+
 import com.hiran.restaurantService.entity.MenuItem;
 import com.hiran.restaurantService.entity.Order;
 import com.hiran.restaurantService.entity.OrderItem;
@@ -34,8 +35,8 @@ public class OrderService {
 
         Order order = new Order();
         order.setRestaurantId(restaurantId);
-        order.setItem(items);
-        order.setStatus("ACCEPTED");
+        order.setItems(items);
+        order.setStatus("ACCEPTED"); //.setStatus("ACCEPTED");
         orderRepository.save(order);
         return true;
     }
