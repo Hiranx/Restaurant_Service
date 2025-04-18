@@ -7,8 +7,11 @@ import com.hiran.restaurantService.service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/restaurants/{restaurantId}/menu")
@@ -21,7 +24,8 @@ public class MenuController {
     @PostMapping
     public ResponseEntity<MenuItem> addMenuItem(
             @PathVariable String restaurantId,
-            @RequestBody MenuItemDTO menuItemDTO) {
+            @RequestPart("menuItem") MenuItemDTO menuItemDTO) throws IOException {
+
         return ResponseEntity.ok(menuService.addMenuItem(restaurantId, menuItemDTO));
     }
 
@@ -29,7 +33,8 @@ public class MenuController {
     public ResponseEntity<MenuItem> updateMenuItem(
             @PathVariable String restaurantId,
             @PathVariable String itemId,
-            @RequestBody MenuItemDTO menuItemDTO) {
+            @RequestPart("menuItem") MenuItemDTO menuItemDTO) throws IOException {
+
         return ResponseEntity.ok(menuService.updateMenuItem(restaurantId, itemId, menuItemDTO));
     }
 
@@ -45,5 +50,17 @@ public class MenuController {
     public ResponseEntity<List<MenuItem>> getMenuItems(
             @PathVariable String restaurantId) {
         return ResponseEntity.ok(menuService.getMenuItems(restaurantId));
+    }
+
+    @PatchMapping("/{itemId}/availability")
+    public ResponseEntity<MenuItem> toggleItemAvailability(
+            @PathVariable String restaurantId,
+            @PathVariable String itemId) {
+        try {
+            MenuItem updatedItem = menuService.toggleItemAvailability(restaurantId, itemId);
+            return ResponseEntity.ok(updatedItem);
+        } catch (NoSuchElementException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 }

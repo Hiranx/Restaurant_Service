@@ -1,6 +1,4 @@
 package com.hiran.restaurantService.entity;
-import lombok.Data;
-import lombok.Getter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -22,53 +20,6 @@ public class Restaurant {
     private boolean approved = false; // New field
     private String registrationDate = String.valueOf(LocalDateTime.now()); // New field
 
-    public String getEmail() {
-        return email;
-    }
-
-    public String getContactNumber() {
-        return contactNumber;
-    }
-
-    public void setContactNumber(String contactNumber) {
-        this.contactNumber = contactNumber;
-    }
-
-    public String getCuisineType() {
-        return cuisineType;
-    }
-
-    public void setCuisineType(String cuisineType) {
-        this.cuisineType = cuisineType;
-    }
-
-    public String getClosingTime() {
-        return closingTime;
-    }
-
-    public void setClosingTime(String closingTime) {
-        this.closingTime = closingTime;
-    }
-
-    public String getOpeningTime() {
-        return openingTime;
-    }
-
-    public void setOpeningTime(String openingTime) {
-        this.openingTime = openingTime;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getRestaurantPassword() {
-        return restaurantPassword;
-    }
-
-    public void setRestaurantPassword(String restaurantPassword) {
-        this.restaurantPassword = restaurantPassword;
-    }
 
     public String getName() {
         return name;
@@ -95,17 +46,8 @@ public class Restaurant {
         this.available = available;
     }
 
-
-    public boolean isApproved() {
-        return approved;
-    }
-
     public void setApproved(boolean approved) {
         this.approved = approved;
-    }
-
-    public String getRegistrationDate() {
-        return registrationDate;
     }
 
     public void setRegistrationDate(String registrationDate) {

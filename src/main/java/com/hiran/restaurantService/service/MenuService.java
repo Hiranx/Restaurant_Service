@@ -6,6 +6,7 @@ import com.hiran.restaurantService.repository.MenuItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -21,6 +22,7 @@ public class MenuService {
         menuItem.setPrice(menuItemDTO.getPrice());
         menuItem.setDescription(menuItemDTO.getDescription());
         menuItem.setCategory(menuItemDTO.getCategory());
+
         return menuItemRepository.save(menuItem);
     }
 
@@ -51,5 +53,16 @@ public class MenuService {
         }
 
         return menuItems;
+    }
+
+    public MenuItem toggleItemAvailability(String restaurantId, String itemId) {
+        MenuItem menuItem = menuItemRepository.findByIdAndRestaurantId(itemId, restaurantId);
+
+        if (menuItem == null) {
+            throw new NoSuchElementException("Menu item not found");
+        }
+
+        menuItem.setAvailable(!menuItem.isAvailable());
+        return menuItemRepository.save(menuItem);
     }
 }

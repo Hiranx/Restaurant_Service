@@ -9,4 +9,5 @@ public interface MenuItemRepository  extends MongoRepository<MenuItem, String> {
     List<MenuItem> findByRestaurantId(String restaurantId);
     MenuItem findByIdAndRestaurantId(String id, String restaurantId);
     void deleteByIdAndRestaurantId(String id, String restaurantId);
+
 }

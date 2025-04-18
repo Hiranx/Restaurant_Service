@@ -1,6 +1,4 @@
 package com.hiran.restaurantService.entity;
-
-import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -13,7 +11,15 @@ public class MenuItem {
     private String description;
     private double price;
     private String category; // e.g., "Appetizer", "Main Course"
-    private boolean isAvailable = true;
+    private boolean available = true;
+
+    public boolean isAvailable() {
+        return available;
+    }
+
+    public void setAvailable(boolean available) {
+        this.available = available;
+    }
 
     public String getRestaurantId() {
         return restaurantId;
@@ -39,16 +45,8 @@ public class MenuItem {
         this.description = description;
     }
 
-    public double getPrice() {
-        return price;
-    }
-
     public void setPrice(double price) {
         this.price = price;
-    }
-
-    public String getCategory() {
-        return category;
     }
 
     public void setCategory(String category) {
@@ -63,11 +61,5 @@ public class MenuItem {
         this.id = id;
     }
 
-    public boolean isAvailable() {
-        return isAvailable;
-    }
 
-    public void setAvailable(boolean available) {
-        isAvailable = available;
-    }
 }
